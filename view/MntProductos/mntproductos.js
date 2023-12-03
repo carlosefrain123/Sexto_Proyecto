@@ -7,7 +7,7 @@ $(document).ready(function () {
         dom: "Bfrtip", //Definimos los elementos del control de tabla
         buttons: ["copyHtml5", "excelHtml5", "csvHtml5", "pdf"],
         ajax: {
-          url: "../../controller/productos.php?op=listar",
+          url: "../../controller/controller.php?op=listar",
           type: "get",
           dataType: "json",
           error: function (e) {

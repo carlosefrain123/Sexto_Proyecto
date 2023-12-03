@@ -1,17 +1,33 @@
 <?php
-    class Producto extends BD{
-        public function get_producto(){
-            $conectar=parent::Conexion();
-            $sql=$conectar->prepare("SELECT * FROM producto WHERE estado=1");
-            $sql->execute();
-            return $resultado=$sql->fetchAll();
+require_once("C:/xampp/htdocs/proyectf/config/conexion.php");
+require_once("C:/xampp/htdocs/proyectf/models/model.php");
+$obj_producto = new Producto();
+switch ($_GET['op']) {
+    case 'listar':
+        $datos = $obj_producto->get_producto();
+        $data = array();
+        foreach ($datos as $row) {
+            $sub_array = array();
+            $sub_array[] = $row['Nombre_producto'];
+            $sub_array[] = $row['Descripcion_producto'];
+            $sub_array[] = $row['Precio_producto'];
+            $sub_array[] = $row['Stock_producto'];
+            /**$sub_array[] = '<button type="button" onClick="editar(' . $row["id_producto"] . ');"  id="' . $row["id_producto"] . '" class="btn btn-outline-primary btn-icon"><div><i class="fa fa-edit"></i></div></button>';
+            $sub_array[] = '<button type="button" onClick="eliminar(' . $row["id_producto"] . ');"  id="' . $row["id_producto"] . '" class="btn btn-outline-danger btn-icon"><div><i class="fa fa-trash"></i></div></button>'; */
+            $sub_array[] = '<button type="button" onClick="editar(' . $row["id_producto"] . ');" id="' . $row["id_producto"] . '" class="btn btn-outline-primary btn-icon"><div><i class="fa fa-edit"></i></div></button> <button type="button" onClick="eliminar(' . $row["id_producto"] . ');" id="' . $row["id_producto"] . '" class="btn btn-outline-danger btn-icon"><div><i class="fa fa-trash"></i></div></button>';
+
+            $data[] = $sub_array;
         }
-        public function get_producto_x_id($id_producto){
-            $conectar=parent::Conexion();
-            $sql=$conectar->prepare("SELECT * FROM producto WHERE $id_producto=?");
-            $sql->bindValue(1,$id_producto);
-            $sql->execute();
-            return $resultado=$sql->fetchAll();
-        }
-    }
-?>
+        $results = array(
+            "sEcho" => 1,
+            "iTotalRecords" => count($data),
+            "iTotalDisplayRecords" => count($data),
+            "aaData" => $data
+        );
+        echo json_encode($results);
+        break;
+
+    default:
+        # code...
+        break;
+}

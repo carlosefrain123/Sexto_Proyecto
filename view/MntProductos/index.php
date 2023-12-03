@@ -36,8 +36,10 @@
                         <thead>
                             <tr>
                                 <th class="wd-15p">Nombre</th>
-                                <th class="wd-15p"></th>
-                                <th class="wd-20p"></th>
+                                <th class="wd-15p">Descripción</th>
+                                <th class="wd-20p">Precio</th>
+                                <th class="wd-20p">Stock</th>
+                                <th class="wd-20p">Funciones</th>
                             </tr>
                         </thead>
                         <tbody>
