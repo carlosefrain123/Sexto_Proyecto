@@ -1,7 +1,4 @@
 <?php
-require_once("C:/xampp/htdocs/proyectf/config/conexion.php");
-require_once("C:/xampp/htdocs/proyectf/models/model.php");
-$obj_producto = new Producto();
 switch ($_GET['op']) {
     case 'listar':
         $datos = $obj_producto->get_producto();
@@ -31,3 +28,4 @@ switch ($_GET['op']) {
         # code...
         break;
 }
+
