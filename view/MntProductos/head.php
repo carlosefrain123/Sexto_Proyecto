@@ -26,7 +26,7 @@
 <meta name="author" content="ThemePixels">
 
 <title>Mantenimiento de Producto</title>
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <!-- vendor css -->
 <link href="../../public/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
 <link href="../../public/lib/Ionicons/css/ionicons.css" rel="stylesheet">
