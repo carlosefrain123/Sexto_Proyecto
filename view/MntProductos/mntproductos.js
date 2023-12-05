@@ -48,6 +48,26 @@ $(document).ready(function () {
     })
     .DataTable();
 });
+function eliminar(id_producto){
+  /**Se agrego el modal */
+  swal.fire({
+    title: "CURD",
+    text: "Desea Eliminar el Registro?",
+    icon: "error",
+    showCancelButton: true,
+    confirmButtonText: "Si",
+    cancelButtonText: "No",
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      swal.fire({
+        title: "Eliminado!",
+        text: "El registro se elimino correctamente.",
+        icon: "success"
+      });
+    }
+  });
+}
 $(document).on("click", "#btnnuevo", function () {
   $("#modalmantenimiento").modal("show");
   $("#mdltitulo").html("Nuevo Registro");
