@@ -60,6 +60,10 @@ function eliminar(id_producto){
     reverseButtons: true
   }).then((result) => {
     if (result.isConfirmed) {
+      //console.log(id_producto);
+      $.post("../../controller/controller.php?op=eliminar",{id_producto:id_producto},function(data){
+      });
+      $('#productos_data').DataTable().ajax.reload();
       swal.fire({
         title: "Eliminado!",
         text: "El registro se elimino correctamente.",
