@@ -1,4 +1,9 @@
 var tabla;
+function init() {
+  $("#producto_form").on("submit", function (e) {
+    guardaryeditar(e);
+  });
+}
 $(document).ready(function () {
   tabla = $("#productos_data")
     .dataTable({
@@ -48,31 +53,56 @@ $(document).ready(function () {
     })
     .DataTable();
 });
-function eliminar(id_producto){
+function eliminar(id_producto) {
   /**Se agrego el modal */
-  swal.fire({
-    title: "CURD",
-    text: "Desea Eliminar el Registro?",
-    icon: "error",
-    showCancelButton: true,
-    confirmButtonText: "Si",
-    cancelButtonText: "No",
-    reverseButtons: true
-  }).then((result) => {
-    if (result.isConfirmed) {
-      //console.log(id_producto);
-      $.post("../../controller/controller.php?op=eliminar",{id_producto:id_producto},function(data){
-      });
-      $('#productos_data').DataTable().ajax.reload();
-      swal.fire({
-        title: "Eliminado!",
-        text: "El registro se elimino correctamente.",
-        icon: "success"
-      });
-    }
+  swal
+    .fire({
+      title: "CURD",
+      text: "Desea Eliminar el Registro?",
+      icon: "error",
+      showCancelButton: true,
+      confirmButtonText: "Si",
+      cancelButtonText: "No",
+      reverseButtons: true,
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        //console.log(id_producto);
+        $.post(
+          "../../controller/controller.php?op=eliminar",
+          { id_producto: id_producto },
+          function (data) {}
+        );
+        $("#productos_data").DataTable().ajax.reload();
+        swal.fire({
+          title: "Eliminado!",
+          text: "El registro se elimino correctamente.",
+          icon: "success",
+        });
+      }
+    });
+}
+function guardaryeditar(e) {
+  e.preventDefault();
+  var formData = new FormData($("#producto_form")[0]);
+  $.ajax({
+    url: "../../controller/controller.php?op=guardaryeditar",
+    type: "POST",
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function (datos) {
+      console.log(datos);
+      $("#producto_form")[0].reset();
+      $("#modalmantenimiento").modal("hide");
+      $("#productos_data").DataTable().ajax.reload();
+      /**Colocar un mensaje del MODAL*/
+      swal.fire("Registro!", "El registro correctamente.", "success");
+    },
   });
 }
 $(document).on("click", "#btnnuevo", function () {
   $("#modalmantenimiento").modal("show");
   $("#mdltitulo").html("Nuevo Registro");
 });
+init();

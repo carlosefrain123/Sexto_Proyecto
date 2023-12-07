@@ -19,11 +19,14 @@ class Producto extends BD
     public function insert_producto($Nombre_producto, $Descripcion_producto, $Precio_producto, $Stock_producto)
     {
         $conectar = parent::Conexion();
-        $sql = $conectar->prepare("INSERT INTO producto (id_producto, Nombre_producto, Descripcion_producto, Precio_producto, Stock_producto, fecha_creacion, fecha_modificacion, fecha_eliminar, estado) VALUES (null, :Nombre_producto, :Descripcion_producto, :Precio_producto, :Stock_producto, NOW(), null, null, 1)");
-        $sql->bindParam(':Nombre_producto', $Nombre_producto);
-        $sql->bindParam(':Descripcion_producto', $Descripcion_producto);
-        $sql->bindParam(':Precio_producto', $Precio_producto);
-        $sql->bindParam(':Stock_producto', $Stock_producto);
+        $sql = "INSERT INTO producto (id_producto, Nombre_producto, Descripcion_producto, Precio_producto, Stock_producto, fecha_creacion, fecha_modificacion, fecha_eliminar, estado) VALUES (NULL, :Nombre_producto, :Descripcion_producto, :Precio_producto, :Stock_producto, NOW(), NULL, NULL, 1)";
+        $sql = $conectar->prepare($sql);
+        $sql->bindParam(":Nombre_producto", $Nombre_producto);
+        $sql->bindParam(":Descripcion_producto", $Descripcion_producto);
+        $sql->bindParam(":Precio_producto", $Precio_producto);
+        $sql->bindParam(":Stock_producto", $Stock_producto);
+
+        // Ejecuta la consulta y devuelve true si la inserción fue exitosa
         return $sql->execute();
     }
 
