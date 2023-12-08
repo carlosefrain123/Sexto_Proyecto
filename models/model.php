@@ -49,4 +49,25 @@ class Producto extends BD
         $sql->bindParam(":Stock_producto", $Stock_producto);
         return $sql->execute();
     }
+    /* public function edite_producto($id_producto, $Nombre_producto, $Descripcion_producto, $Precio_producto, $Stock_producto)
+    {
+        $conectar=parent::Conexion();
+        $sql = "UPDATE producto
+            SET
+                Nombre_producto = ?,
+                Descripcion_producto = ?,
+                Precio_producto = ?,
+                Stock_producto = ?,
+                fecha_modificacion = NOW()
+            WHERE
+                id_producto = ?";
+        $sql=$conectar->prepare($sql);
+        $sql->bindValue(1,$Nombre_producto);
+        $sql->bindValue(2,$Descripcion_producto);
+        $sql->bindValue(3,$Precio_producto);
+        $sql->bindValue(4,$Stock_producto);
+        $sql->bindValue(5,$id_producto);
+        $sql->execute();
+        return $resultado = $sql->fetchAll();
+    } */
 }
