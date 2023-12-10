@@ -26,7 +26,7 @@ class Producto extends BD
         $sql->bindParam(":Precio_producto", $Precio_producto);
         $sql->bindParam(":Stock_producto", $Stock_producto);
 
-        // Ejecuta la consulta y devuelve true si la inserción fue exitosa
+        //TODOS: Ejecuta la consulta y devuelve true si la inserción fue exitosa
         return $sql->execute();
     }
 

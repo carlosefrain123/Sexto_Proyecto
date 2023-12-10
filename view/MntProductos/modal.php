@@ -9,6 +9,13 @@
                     <input type="hidden" id="id_producto" name="id_producto">
 
                     <div class="form-group">
+                        <label class="form-label" for="id_categoria">Categoria del Producto</label>
+                        <select class="form-select" id="id_categoria" aria-label="Default select example" name="id_categoria" >
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label class="form-label" for="Nombre_producto">Nombre del Producto</label>
                         <input type="text" class="form-control" id="Nombre_producto" name="Nombre_producto" placeholder="Ingrese Nombre" required>
                     </div>

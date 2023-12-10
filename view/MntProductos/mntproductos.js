@@ -5,6 +5,11 @@ function init() {
   });
 }
 $(document).ready(function () {
+  //TODO: Se agrega el Combo
+  $.post("../../controller/categoria.php?op=combo",function (data) {
+    //console.log(data);
+    $('#id_categoria').html(data);
+  });
   tabla = $("#productos_data")
     .dataTable({
       aProcessing: true, //Activamos el procesamiento del datatables
