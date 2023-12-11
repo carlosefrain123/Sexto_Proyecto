@@ -10,8 +10,7 @@
 
                     <div class="form-group">
                         <label class="form-label" for="id_categoria">Categoria del Producto</label>
-                        <select class="form-select" id="id_categoria" aria-label="Default select example" name="id_categoria" >
-
+                        <select class="form-select select2" id="id_categoria" aria-label="Default select example" name="id_categoria" data-placeholder="Seleccione" style="width: 100%">
                         </select>
                     </div>
 

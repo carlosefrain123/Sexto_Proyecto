@@ -5,10 +5,14 @@ function init() {
   });
 }
 $(document).ready(function () {
-  //TODO: Se agrega el Combo
-  $.post("../../controller/categoria.php?op=combo",function (data) {
+  //TODO: Se agrega el Combo - Y su Select2 de categoria
+  /* $('#id_categoria').select2({
+    dropdownParent: $("#modalmantenimiento")
+  }); */
+
+  $.post("../../controller/categoria.php?op=combo", function (data) {
     //console.log(data);
-    $('#id_categoria').html(data);
+    $("#id_categoria").html(data);
   });
   tabla = $("#productos_data")
     .dataTable({
@@ -58,22 +62,22 @@ $(document).ready(function () {
     })
     .DataTable();
 });
-function editar(id_producto){
+function editar(id_producto) {
   $.post(
     "../../controller/controller.php?op=mostrar",
-    {id_producto: id_producto},
-    function(data){
-      data=JSON.parse(data);
+    { id_producto: id_producto },
+    function (data) {
+      data = JSON.parse(data);
       //console.log(data);
-      $('#id_producto').val(data.id_producto);
-      $('#id_categoria').val(data.id_categoria).trigger('change');
-      $('#Nombre_producto').val(data.Nombre_producto);
-      $('#Descripcion_producto').val(data.Descripcion_producto);
-      $('#Precio_producto').val(data.Precio_producto);
-      $('#Stock_producto').val(data.Stock_producto);
+      $("#id_producto").val(data.id_producto);
+      $("#id_categoria").val(data.id_categoria).trigger("change");
+      $("#Nombre_producto").val(data.Nombre_producto);
+      $("#Descripcion_producto").val(data.Descripcion_producto);
+      $("#Precio_producto").val(data.Precio_producto);
+      $("#Stock_producto").val(data.Stock_producto);
     }
   );
-  $("#mdltitulo").html('Editar Registro');
+  $("#mdltitulo").html("Editar Registro");
   $("#modalmantenimiento").modal("show");
 }
 function guardaryeditar(e) {
@@ -125,9 +129,13 @@ function eliminar(id_producto) {
     });
 }
 
-
 $(document).on("click", "#btnnuevo", function () {
-  $("#id_producto").val('');
+  $("#id_producto").val("");
+  $("#id_categoria").val("").trigger("change");
+  $("#Nombre_producto").val("");
+  $("#Descripcion_producto").val("");
+  $("#Precio_producto").val("");
+  $("#Stock_producto").val("");
   $("#modalmantenimiento").modal("show");
   $("#mdltitulo").html("Nuevo Registro");
 });
