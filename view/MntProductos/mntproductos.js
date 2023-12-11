@@ -66,6 +66,7 @@ function editar(id_producto){
       data=JSON.parse(data);
       //console.log(data);
       $('#id_producto').val(data.id_producto);
+      $('#id_categoria').val(data.id_categoria).trigger('change');
       $('#Nombre_producto').val(data.Nombre_producto);
       $('#Descripcion_producto').val(data.Descripcion_producto);
       $('#Precio_producto').val(data.Precio_producto);

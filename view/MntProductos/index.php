@@ -36,11 +36,13 @@
                     <table id="productos_data" class="table display responsive nowrap">
                         <thead>
                             <tr>
+                                <th class="wd-15p">Categoria</th>
                                 <th class="wd-15p">Nombre</th>
-                                <th class="wd-15p">Descripción</th>
+                               <th class="wd-15p">Descripción</th>
                                 <th class="wd-20p">Precio</th>
                                 <th class="wd-20p">Stock</th>
-                                <th class="wd-20p">Funciones</th>
+                                <th class="wd-15p"></th>
+                                <th class="wd-15p"></th>
                             </tr>
                         </thead>
                         <tbody>
